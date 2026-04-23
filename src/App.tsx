@@ -17,6 +17,7 @@ export function App() {
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/project/:id" element={<ProjectPage />} />
           </Routes>
         </AnimatePresence>
