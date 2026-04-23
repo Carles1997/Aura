@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { motion, useInView } from "framer-motion"
 import { ArrowLeft } from "lucide-react"
-import { projects } from "@/data/content"
+import { useProjects } from "@/data/storyblok"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
@@ -28,12 +28,48 @@ export default function ProjectPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
 
+  // Carreguem tots els projectes de Storyblok
+  const { projects, loading } = useProjects()
+
+  // Mostrem pantalla de càrrega
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <p
+          className="text-[9px] tracking-[0.4em] uppercase text-muted-foreground opacity-50"
+          style={{ fontFamily: "var(--font-space-mono)" }}
+        >
+          Loading...
+        </p>
+      </div>
+    )
+  }
+
   const project = projects.find((p) => p.id === id)
   const currentIndex = projects.findIndex((p) => p.id === id)
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
 
-  if (!project) return null
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <div className="text-center">
+          <p
+            className="text-[9px] tracking-[0.4em] uppercase text-muted-foreground opacity-50 mb-4"
+            style={{ fontFamily: "var(--font-space-mono)" }}
+          >
+            Project not found
+          </p>
+          <button
+            onClick={() => navigate("/")}
+            className="text-[10px] tracking-[0.3em] uppercase underline"
+          >
+            Back to index
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   const metaStyle = "font-mono text-[9px] uppercase tracking-[0.3em] opacity-50"
 
@@ -42,9 +78,9 @@ export default function ProjectPage() {
       <Navbar />
 
       <main className="px-6 md:px-10 max-w-[1800px] mx-auto pt-20 md:pt-28">
-        
+
         {/* ——— HEADER COMPACTE ——— */}
-        <header className="mb-8 md:mb-12"> {/* Reduït de 120px a un marge molt més discret */}
+        <header className="mb-8 md:mb-12">
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -64,7 +100,7 @@ export default function ProjectPage() {
             {project.title}
           </motion.h1>
 
-          <motion.div 
+          <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8 py-6 border-y border-border font-mono text-[9px] uppercase tracking-[0.2em]"
           >
             <div><p className="opacity-50 mb-1 italic">Year</p><p>{project.year}</p></div>
@@ -76,7 +112,6 @@ export default function ProjectPage() {
 
         {/* ——— SECCIÓ SPLIT 50/50 COMPACTA ——— */}
         <div className="grid grid-cols-1 md:grid-cols-2 border-b border-border mb-[var(--section-gap)]">
-          {/* Esquerra: Imatge amb menys padding vertical */}
           <div className="py-12 md:py-16 md:pr-10 flex items-center justify-center">
             <AnimatedSection className="w-full max-w-sm">
               <div className="aspect-[3/4] md:aspect-[4/5] overflow-hidden bg-secondary/5 outline outline-[0.5px] outline-black/[0.07]">
@@ -85,7 +120,6 @@ export default function ProjectPage() {
             </AnimatedSection>
           </div>
 
-          {/* Dreta: Text amb menys padding i línia vertical */}
           <div className="py-12 md:py-16 md:pl-10 md:border-l border-border flex flex-col justify-center">
             <AnimatedSection delay={0.2} className="w-full max-w-sm">
               <div className="space-y-6">
@@ -99,7 +133,7 @@ export default function ProjectPage() {
         </div>
 
         {/* ——— GALERIA ——— */}
-        <section className="mb-20"> 
+        <section className="mb-20">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-[var(--section-gap)] items-center">
             {project.images.slice(1).map((img, idx) => {
               let colClasses = idx % 2 === 0 ? "md:col-span-5 md:col-start-1" : "md:col-span-5 md:col-start-8"

@@ -1,12 +1,14 @@
 import { motion } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
-import { siteConfig } from "@/data/content"
+import { useSiteConfig } from "@/data/storyblok"
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number]
 
 export default function Navbar() {
   const location = useLocation()
   const isHome = location.pathname === "/"
+
+  const { siteConfig } = useSiteConfig()
 
   return (
     <motion.header
@@ -16,7 +18,6 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-5 md:px-10 md:py-6"
       style={{ mixBlendMode: "normal" }}
     >
-      {/* Studio wordmark */}
       <Link
         to="/"
         className="group flex items-center gap-3"
@@ -33,7 +34,6 @@ export default function Navbar() {
         />
       </Link>
 
-      {/* Nav links */}
       <nav className="flex items-center gap-8">
         <Link
           to="/"
@@ -44,7 +44,7 @@ export default function Navbar() {
         >
           {siteConfig.nav.index}
         </Link>
-        <a
+          <a 
           href="#about"
           className="text-[10px] tracking-[0.25em] uppercase opacity-40 transition-opacity duration-300 hover:opacity-100"
           style={{ fontFamily: "var(--font-space-mono)" }}
