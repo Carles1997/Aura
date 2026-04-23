@@ -19,6 +19,7 @@ export function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/project/:id" element={<ProjectPage />} />
+            <Route path="/projects/:id" element={<ProjectPage />} />
           </Routes>
         </AnimatePresence>
 
