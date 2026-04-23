@@ -13,11 +13,11 @@ storyblokInit({
   accessToken: import.meta.env.VITE_STORYBLOK_TOKEN,
   use: [apiPlugin],
   apiOptions: {
-    region: "eu", // regió europea (coincideix amb el Space)
+    region: "eu",
   },
+  bridge: true, // activa el Visual Editor
   components: {
-    // Aquí registrarem els components a mesura que els creem.
-    // De moment està buit, hi afegirem Hero, About, Project, etc.
+    // de moment buit
   },
 })
 

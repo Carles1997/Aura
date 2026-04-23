@@ -1,86 +1,83 @@
 // ============================================================
 // STORYBLOK DATA BRIDGE
 // ============================================================
-// Aquest fitxer carrega el contingut de Storyblok i el transforma
-// a l'estructura que ja esperen els components React.
-// No cal tocar aquest fitxer per editar contingut — fes-ho a Storyblok.
-// ============================================================
 
-import { useState, useEffect } from "react";
-import { getStoryblokApi } from "@storyblok/react";
-import type { Project } from "./content";
+import { useState, useEffect } from "react"
+import { getStoryblokApi } from "@storyblok/react"
+import type { Project } from "./content"
 
 // =============================
 // Estructures intermèdies de Storyblok
 // =============================
 
 interface SbAsset {
-  filename?: string;
-  alt?: string;
+  filename?: string
+  alt?: string
 }
 
 interface SbHeroBlock {
-  component: "hero";
-  studio_tagline?: string;
-  line_1?: string;
-  line_2?: string;
-  line_3?: string;
-  line_4?: string;
-  subtext?: string;
+  component: "hero"
+  studio_tagline?: string
+  line_1?: string
+  line_2?: string
+  line_3?: string
+  line_4?: string
+  subtext?: string
 }
 
 interface SbAboutBlock {
-  component: "about";
-  headline?: string;
-  body?: string;
-  services?: string[];
-  email?: string;
-  phone?: string;
-  location?: string;
-  photograph?: SbAsset;
-  photograph_alt?: string;
+  component: "about"
+  headline?: string
+  body?: string
+  services?: string[]
+  email?: string
+  phone?: string
+  location?: string
+  photograph?: SbAsset
+  photograph_alt?: string
 }
 
-type SbBodyBlock = SbHeroBlock | SbAboutBlock;
+type SbBodyBlock = SbHeroBlock | SbAboutBlock
 
 interface SbProjectCollageImage {
-  src?: SbAsset;
-  alt?: string;
-  position?: "dominant" | "secondary";
-  width?: number;
-  height?: number;
+  src?: SbAsset
+  alt?: string
+  position?: "dominant" | "secondary"
+  width?: number
+  height?: number
 }
 
 interface SbProjectGalleryImage {
-  src?: SbAsset;
-  alt?: string;
-  aspect?: "landscape" | "portrait" | "square";
+  src?: SbAsset
+  alt?: string
+  aspect?: "landscape" | "portrait" | "square"
 }
 
 interface SbProjectCredit {
-  role?: string;
-  name?: string;
+  role?: string
+  name?: string
 }
 
 interface SbProjectContent {
-  project_index?: number;
-  title?: string;
-  year?: string;
-  client?: string;
-  category?: string;
-  preview_image?: SbAsset;
-  hero_image?: SbAsset;
-  challenge?: string;
-  solution?: string;
-  tags?: string[];
-  collage_images?: SbProjectCollageImage[];
-  images?: SbProjectGalleryImage[];
-  credits?: SbProjectCredit[];
+  project_index?: number
+  title?: string
+  year?: string
+  client?: string
+  category?: string
+  preview_image?: SbAsset
+  hero_image?: SbAsset
+  challenge?: string
+  solution?: string
+  tags?: string[]
+  collage_images?: SbProjectCollageImage[]
+  images?: SbProjectGalleryImage[]
+  credits?: SbProjectCredit[]
 }
 
 interface SbStory<T> {
-  slug: string;
-  content: T;
+  slug: string
+  id: number
+  content: T
 }
 
 // =============================
@@ -88,37 +85,33 @@ interface SbStory<T> {
 // =============================
 
 export interface SiteConfig {
-  studioName: string;
-  studioTagline: string;
+  studioName: string
+  studioTagline: string
   heroManifesto: {
-    line1: string;
-    line2: string;
-    line3: string;
-    line4: string;
-  };
-  heroSubtext: string;
+    line1: string
+    line2: string
+    line3: string
+    line4: string
+  }
+  heroSubtext: string
   nav: {
-    index: string;
-    about: string;
-    contact: string;
-  };
+    index: string
+    about: string
+    contact: string
+  }
   about: {
-    headline: string;
-    body: string;
-    services: string[];
+    headline: string
+    body: string
+    services: string[]
     contact: {
-      email: string;
-      phone: string;
-      location: string;
-    };
-    photographUrl: string;
-    photographAlt: string;
-  };
+      email: string
+      phone: string
+      location: string
+    }
+    photographUrl: string
+    photographAlt: string
+  }
 }
-
-// =============================
-// Valors per defecte (fallback si Storyblok falla)
-// =============================
 
 const defaultSiteConfig: SiteConfig = {
   studioName: "ATELIER",
@@ -134,27 +127,23 @@ const defaultSiteConfig: SiteConfig = {
     photographUrl: "",
     photographAlt: "",
   },
-};
+}
 
 // =============================
 // Transformadors
 // =============================
 
 function assetToUrl(asset: SbAsset | undefined): string {
-  return asset?.filename || "";
+  return asset?.filename || ""
 }
 
 function transformHomeStory(
   content: { body?: SbBodyBlock[] } | undefined
 ): SiteConfig {
-  if (!content?.body) return defaultSiteConfig;
+  if (!content?.body) return defaultSiteConfig
 
-  const hero = content.body.find((b) => b.component === "hero") as
-    | SbHeroBlock
-    | undefined;
-  const about = content.body.find((b) => b.component === "about") as
-    | SbAboutBlock
-    | undefined;
+  const hero = content.body.find((b) => b.component === "hero") as SbHeroBlock | undefined
+  const about = content.body.find((b) => b.component === "about") as SbAboutBlock | undefined
 
   return {
     studioName: "ATELIER",
@@ -179,11 +168,11 @@ function transformHomeStory(
       photographUrl: assetToUrl(about?.photograph),
       photographAlt: about?.photograph_alt || "",
     },
-  };
+  }
 }
 
 function transformProjectStory(story: SbStory<SbProjectContent>): Project {
-  const c = story.content;
+  const c = story.content
   return {
     id: story.slug,
     index: c.project_index || 0,
@@ -212,7 +201,24 @@ function transformProjectStory(story: SbStory<SbProjectContent>): Project {
       role: cr.role || "",
       name: cr.name || "",
     })),
-  };
+  }
+}
+
+// =============================
+// Bridge helper
+// =============================
+
+type StoryblokBridgeInstance = {
+  on: (events: string[], cb: () => void) => void
+}
+
+function getBridge(): StoryblokBridgeInstance | null {
+  if (typeof window === "undefined") return null
+  const win = window as unknown as {
+    StoryblokBridge?: new (opts: { resolveRelations: string[] }) => StoryblokBridgeInstance
+  }
+  if (!win.StoryblokBridge) return null
+  return new win.StoryblokBridge({ resolveRelations: [] })
 }
 
 // =============================
@@ -220,32 +226,38 @@ function transformProjectStory(story: SbStory<SbProjectContent>): Project {
 // =============================
 
 export function useSiteConfig(): { siteConfig: SiteConfig; loading: boolean } {
-  const [siteConfig, setSiteConfig] = useState<SiteConfig>(defaultSiteConfig);
-  const [loading, setLoading] = useState(true);
+  const [siteConfig, setSiteConfig] = useState<SiteConfig>(defaultSiteConfig)
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const api = getStoryblokApi();
+  const load = () => {
+    const api = getStoryblokApi()
     api
       .get("cdn/stories/home", { version: "draft" })
       .then((res) => {
-        setSiteConfig(transformHomeStory(res.data.story.content));
-        setLoading(false);
+        setSiteConfig(transformHomeStory(res.data.story.content))
+        setLoading(false)
       })
       .catch((err) => {
-        console.error("Error loading home story:", err);
-        setLoading(false);
-      });
-  }, []);
+        console.error("Error loading home story:", err)
+        setLoading(false)
+      })
+  }
 
-  return { siteConfig, loading };
+  useEffect(() => {
+    load()
+    const sb = getBridge()
+    if (sb) sb.on(["published", "change", "input"], () => load())
+  }, [])
+
+  return { siteConfig, loading }
 }
 
 export function useProjects(): { projects: Project[]; loading: boolean } {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const api = getStoryblokApi();
+  const load = () => {
+    const api = getStoryblokApi()
     api
       .get("cdn/stories", {
         version: "draft",
@@ -253,43 +265,55 @@ export function useProjects(): { projects: Project[]; loading: boolean } {
         content_type: "project",
       })
       .then((res) => {
-        const stories = res.data.stories as SbStory<SbProjectContent>[];
+        const stories = res.data.stories as SbStory<SbProjectContent>[]
         const transformed = stories
           .map(transformProjectStory)
-          .sort((a, b) => a.index - b.index);
-        setProjects(transformed);
-        setLoading(false);
+          .sort((a, b) => a.index - b.index)
+        setProjects(transformed)
+        setLoading(false)
       })
       .catch((err) => {
-        console.error("Error loading projects:", err);
-        setLoading(false);
-      });
-  }, []);
+        console.error("Error loading projects:", err)
+        setLoading(false)
+      })
+  }
 
-  return { projects, loading };
+  useEffect(() => {
+    load()
+    const sb = getBridge()
+    if (sb) sb.on(["published", "change", "input"], () => load())
+  }, [])
+
+  return { projects, loading }
 }
 
 export function useProject(slug: string | undefined): {
-  project: Project | null;
-  loading: boolean;
+  project: Project | null
+  loading: boolean
 } {
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [project, setProject] = useState<Project | null>(null)
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    if (!slug) return;
-    const api = getStoryblokApi();
+  const load = () => {
+    if (!slug) return
+    const api = getStoryblokApi()
     api
       .get(`cdn/stories/projects/${slug}`, { version: "draft" })
       .then((res) => {
-        setProject(transformProjectStory(res.data.story));
-        setLoading(false);
+        setProject(transformProjectStory(res.data.story))
+        setLoading(false)
       })
       .catch((err) => {
-        console.error(`Error loading project ${slug}:`, err);
-        setLoading(false);
-      });
-  }, [slug]);
+        console.error(`Error loading project ${slug}:`, err)
+        setLoading(false)
+      })
+  }
 
-  return { project, loading };
+  useEffect(() => {
+    load()
+    const sb = getBridge()
+    if (sb) sb.on(["published", "change", "input"], () => load())
+  }, [slug])
+
+  return { project, loading }
 }
