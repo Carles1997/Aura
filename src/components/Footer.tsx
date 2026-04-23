@@ -16,13 +16,13 @@ function FadeItem({
   className?: string
 }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: "-60px" })
+  const inView = useInView(ref, { once: true, margin: "-20px" })
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay, ease }}
+      transition={{ duration: 0.6, delay, ease }}
       className={className}
     >
       {children}
@@ -32,31 +32,35 @@ function FadeItem({
 
 export default function Footer() {
   const photoRef = useRef(null)
-  const photoInView = useInView(photoRef, { once: true, margin: "-100px" })
+  const photoInView = useInView(photoRef, { once: true, margin: "-50px" })
   const { about } = siteConfig
 
   return (
-    <footer id="about" className="relative border-t border-border">
-      {/* Split-screen layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[600px]">
-        {/* Left — Photograph */}
+    <footer id="about" className="relative border-t border-black/10 bg-background">
+      
+      {/* ——— LÍNIA VERTICAL DEFINITIVA (Forçada) ——— */}
+      {/* Utilitzem black/10 en comptes de border/10 per garantir visibilitat sobre el crema */}
+      <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-black/10 hidden md:block z-30" />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[380px] md:min-h-[450px] relative">
+        
+        {/* ——— ESQUERRA: FOTOGRAFIA ——— */}
         <motion.div
           ref={photoRef}
           initial={{ opacity: 0 }}
           animate={photoInView ? { opacity: 1 } : {}}
           transition={{ duration: 1.2, ease }}
-          className="relative overflow-hidden"
-          style={{ minHeight: "400px" }}
+          className="relative overflow-hidden h-[260px] md:h-auto"
         >
           <img
             src={about.photographUrl}
             alt={about.photographAlt}
-            className="absolute inset-0 w-full h-full object-cover grayscale"
+            className="absolute inset-0 w-full h-full object-cover grayscale opacity-80"
           />
-          <div className="absolute inset-0 bg-foreground/10 mix-blend-multiply" />
-          <div className="absolute bottom-6 left-6">
+          <div className="absolute inset-0 bg-black/5 mix-blend-multiply" />
+          <div className="absolute bottom-6 left-6 z-20">
             <p
-              className="text-[9px] tracking-[0.2em] uppercase text-white/60"
+              className="text-[8px] tracking-[0.4em] uppercase text-white/50"
               style={{ fontFamily: "var(--font-space-mono)" }}
             >
               {about.photographAlt}
@@ -64,22 +68,22 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* Right — Details */}
-        <div className="flex flex-col justify-between p-10 md:p-14 lg:p-20">
+        {/* ——— DRETA: CONTINGUT ——— */}
+        <div className="flex flex-col justify-between p-6 md:p-10 lg:p-12 bg-[#f2f0eb] relative z-10">
           <div>
             <FadeItem delay={0}>
               <p
-                className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-8"
+                className="text-[8px] tracking-[0.3em] uppercase text-foreground/40 mb-3 italic"
                 style={{ fontFamily: "var(--font-space-mono)" }}
               >
-                About the Studio
+                The Studio
               </p>
             </FadeItem>
 
             <FadeItem delay={0.1}>
               <h2
-                className="text-2xl md:text-3xl leading-tight mb-8 text-foreground"
-                style={{ fontFamily: "var(--font-playfair)", fontStyle: "italic" }}
+                className="text-2xl md:text-3xl lg:text-4xl leading-[0.9] tracking-tighter mb-6 text-foreground italic"
+                style={{ fontFamily: "var(--font-playfair)" }}
               >
                 {about.headline}
               </h2>
@@ -87,82 +91,79 @@ export default function Footer() {
 
             <FadeItem delay={0.15}>
               <p
-                className="text-[11px] leading-relaxed tracking-wider text-muted-foreground mb-10"
+                className="text-[12px] leading-relaxed tracking-wide text-foreground/70 mb-10 max-w-[380px]"
                 style={{ fontFamily: "var(--font-space-mono)" }}
               >
                 {about.body}
               </p>
             </FadeItem>
 
-            <FadeItem delay={0.2}>
-              <div className="mb-10">
-                <p
-                  className="text-[9px] tracking-[0.25em] uppercase text-muted-foreground mb-4"
-                  style={{ fontFamily: "var(--font-space-mono)" }}
-                >
-                  Services
+            {/* ——— GRID D'INFORMACIÓ ——— */}
+            <div className="grid grid-cols-2 gap-8 border-t border-black/10 pt-6">
+              <FadeItem delay={0.2}>
+                <p className="text-[8px] tracking-[0.4em] uppercase text-foreground/30 mb-4 italic" style={{ fontFamily: "var(--font-space-mono)" }}>
+                  Capabilities
                 </p>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {about.services.map((service, i) => (
                     <li
                       key={i}
-                      className="flex items-center gap-3 text-[10px] tracking-[0.15em] uppercase text-foreground"
+                      className="text-[10px] tracking-[0.1em] uppercase text-foreground/80 font-light"
                       style={{ fontFamily: "var(--font-space-mono)" }}
                     >
-                      <span className="w-4 h-px bg-border" />
                       {service}
                     </li>
                   ))}
                 </ul>
-              </div>
-            </FadeItem>
+              </FadeItem>
 
-            <FadeItem delay={0.25}>
-              <div className="space-y-2">
-                <p
-                  className="text-[9px] tracking-[0.25em] uppercase text-muted-foreground mb-4"
-                  style={{ fontFamily: "var(--font-space-mono)" }}
-                >
-                  Contact
+              <FadeItem delay={0.25}>
+                <p className="text-[8px] tracking-[0.4em] uppercase text-foreground/30 mb-4 italic" style={{ fontFamily: "var(--font-space-mono)" }}>
+                  Inquiries
                 </p>
-                <a
-                  href={`mailto:${about.contact.email}`}
-                  className="block text-[10px] tracking-wider text-foreground hover:text-muted-foreground transition-colors"
-                  style={{ fontFamily: "var(--font-space-mono)" }}
-                >
-                  {about.contact.email}
-                </a>
-                <p
-                  className="text-[10px] tracking-wider text-muted-foreground"
-                  style={{ fontFamily: "var(--font-space-mono)" }}
-                >
-                  {about.contact.location}
-                </p>
-              </div>
-            </FadeItem>
+                <div className="space-y-4">
+                  <a
+                    href={`mailto:${about.contact.email}`}
+                    className="block text-[10px] md:text-[11px] tracking-wider text-foreground hover:opacity-50 transition-opacity underline underline-offset-4 decoration-black/20"
+                    style={{ fontFamily: "var(--font-space-mono)" }}
+                  >
+                    {about.contact.email}
+                  </a>
+                  <p
+                    className="text-[10px] md:text-[11px] leading-relaxed tracking-wider text-foreground/50 max-w-[160px]"
+                    style={{ fontFamily: "var(--font-space-mono)" }}
+                  >
+                    {about.contact.location}
+                  </p>
+                </div>
+              </FadeItem>
+            </div>
           </div>
 
-          {/* Bottom — View All Work link */}
-          <FadeItem delay={0.3}>
-            <div className="mt-14 pt-8 border-t border-border flex items-center justify-between">
+          {/* ——— PEU DE PÀGINA FINAL ——— */}
+          <FadeItem delay={0.3} className="mt-12">
+            <div className="pt-6 border-t border-black/10 flex items-end justify-between">
               <Link
                 to="/"
-                className="group flex items-center gap-3 text-[10px] tracking-[0.2em] uppercase text-foreground hover:text-muted-foreground transition-colors"
+                className="group flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-foreground font-medium"
                 style={{ fontFamily: "var(--font-space-mono)" }}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               >
-                View All Work
+                Index
                 <ArrowRight
-                  size={12}
+                  size={10}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Link>
-              <span
-                className="text-[9px] tracking-wider text-muted-foreground"
-                style={{ fontFamily: "var(--font-space-mono)" }}
-              >
-                © {new Date().getFullYear()} {siteConfig.studioName}
-              </span>
+              
+              <div className="flex flex-col items-end gap-1">
+                <span className="text-[8px] tracking-[0.4em] uppercase text-foreground/30" style={{ fontFamily: "var(--font-space-mono)" }}>
+                  © {new Date().getFullYear()}
+                </span>
+                <span className="text-[8px] tracking-[0.4em] uppercase text-foreground/20" style={{ fontFamily: "var(--font-space-mono)" }}>
+                  Rigor
+                </span>
+              </div>
             </div>
           </FadeItem>
         </div>

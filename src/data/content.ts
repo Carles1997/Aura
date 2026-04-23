@@ -3,7 +3,6 @@
 // ============================================================
 // This is the single source of truth for all website content.
 // Edit this file to update any text, images, or project data.
-// No technical knowledge required — just update the values below.
 // ============================================================
 
 export const siteConfig = {
@@ -171,8 +170,9 @@ export const projects: Project[] = [
         height: 260,
       },
       {
-        src: "https://images.unsplash.com/photo-1609687829522-1e01e9ff6849?w=300&q=80&auto=format",
-        alt: "Brand mark",
+        // CHANGE 08: Updated broken image path to a high-quality placeholder/new asset
+        src: "https://images.unsplash.com/photo-1502472592233-68f707831f24?w=500&q=80&auto=format",
+        alt: "Brand mark detail",
         position: "secondary",
         width: 200,
         height: 200,
@@ -200,8 +200,9 @@ export const projects: Project[] = [
         aspect: "landscape",
       },
       {
-        src: "https://images.unsplash.com/photo-1609687829522-1e01e9ff6849?w=800&q=80&auto=format",
-        alt: "Brand mark — stamp and wax seal",
+        // CHANGE 08: Fixed broken image for brand mark / stamp
+        src: "https://images.unsplash.com/photo-1518173835740-f5d14111d76a?w=1000&q=80&auto=format",
+        alt: "Brand mark — stamp and wax seal detail",
         aspect: "square",
       },
     ],
