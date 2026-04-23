@@ -1,0 +1,62 @@
+{
+  "index": 4,
+  "title": "Haus Frankfurt",
+  "year": "2023",
+  "client": "Haus Frankfurt GmbH",
+  "category": "Brand Strategy / Spatial Identity",
+  "previewImage": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&crop=top",
+  "heroImage": "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1400&q=80&auto=format",
+  "challenge": "Haus Frankfurt, a developer of premium residential properties in the Rhine-Main region, required a brand capable of communicating their philosophy: that architecture is not backdrop but protagonist. Their previous marketing language focused on amenities rather than meaning — a common failure in luxury real estate communication.",
+  "solution": "We built a brand identity around the proposition 'Architecture is Memory' — positioning Haus Frankfurt not as a developer of buildings but as a curator of lived experience. A refined visual system using precise geometric forms extracted from the Bauhaus legacy provides a conceptual through-line. The identity system scales seamlessly from architectural hoardings to intimate prospect books.",
+  "tags": ["Real Estate", "Luxury", "Spatial Identity", "Brand Architecture"],
+  "collageImages": [
+    {
+      "src": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&q=80&auto=format",
+      "alt": "Signage system",
+      "position": "dominant",
+      "width": 360,
+      "height": 480
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=300&q=80&auto=format",
+      "alt": "Prospect book",
+      "position": "secondary",
+      "width": 200,
+      "height": 260
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1430285561322-7808604715df?w=300&q=80&auto=format",
+      "alt": "Wayfinding",
+      "position": "secondary",
+      "width": 200,
+      "height": 200
+    }
+  ],
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80&auto=format",
+      "alt": "Hoarding and site signage system",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80&auto=format",
+      "alt": "Prospect book interior spread",
+      "aspect": "portrait"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1430285561322-7808604715df?w=1200&q=80&auto=format",
+      "alt": "Environmental wayfinding application",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format",
+      "alt": "Brand mark construction",
+      "aspect": "square"
+    }
+  ],
+  "credits": [
+    { "role": "Brand Strategy", "name": "M. Carvalho" },
+    { "role": "Spatial Design", "name": "Studio Atelier" },
+    { "role": "Art Direction", "name": "E. Voss" }
+  ]
+}

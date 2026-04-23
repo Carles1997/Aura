@@ -1,0 +1,62 @@
+{
+  "index": 1,
+  "title": "Meridian Capital",
+  "year": "2024",
+  "client": "Meridian Capital Group",
+  "category": "Brand Strategy / Visual Identity",
+  "previewImage": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format",
+  "heroImage": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80&auto=format",
+  "challenge": "Meridian Capital Group, a pan-European private equity firm managing €4.2 billion in assets, faced a fundamental identity crisis. Their existing visual language communicated aggression where sophistication was required. In an industry where trust is the primary currency, their brand was undermining decades of institutional credibility.",
+  "solution": "We developed a brand architecture rooted in the concept of 'considered permanence' — visual language that signals stability without stagnation. A custom wordmark with subtle geometric tension, a monochromatic palette drawing from aged stone and oxidised copper, and a typographic system that prioritises legibility at every scale. The result is a brand that whispers authority rather than demanding attention.",
+  "tags": ["Private Equity", "Identity System", "Wordmark", "Brand Guidelines"],
+  "collageImages": [
+    {
+      "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80&auto=format",
+      "alt": "Brand identity application",
+      "position": "dominant",
+      "width": 360,
+      "height": 480
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80&auto=format",
+      "alt": "Wordmark construction",
+      "position": "secondary",
+      "width": 200,
+      "height": 260
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300&q=80&auto=format",
+      "alt": "Material palette",
+      "position": "secondary",
+      "width": 200,
+      "height": 200
+    }
+  ],
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80&auto=format",
+      "alt": "Brand identity application — stationery",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format",
+      "alt": "Wordmark construction and spacing",
+      "aspect": "portrait"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format",
+      "alt": "Environmental signage application",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80&auto=format",
+      "alt": "Brand palette and material exploration",
+      "aspect": "square"
+    }
+  ],
+  "credits": [
+    { "role": "Creative Direction", "name": "E. Voss" },
+    { "role": "Brand Strategy", "name": "M. Carvalho" },
+    { "role": "Typography", "name": "Studio Atelier" }
+  ]
+}

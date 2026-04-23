@@ -1,0 +1,62 @@
+{
+  "index": 2,
+  "title": "Forma Ceramics",
+  "year": "2024",
+  "client": "Forma Studio",
+  "category": "Brand Identity / Packaging",
+  "previewImage": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80&auto=format",
+  "heroImage": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1400&q=80&auto=format",
+  "challenge": "Forma Studio, a Lisbon-based ceramics atelier producing hand-thrown functional objects, needed a brand identity that could hold its own against the noise of the lifestyle market without betraying the meditative quietude of the craft itself. The challenge was to market without merchandising.",
+  "solution": "We took the imperfection inherent in hand-throwing as the central strategic proposition. The brand identity celebrates the fingerprint — the evidence of the maker's hand. A logotype set in a classical serif with deliberate weight variation echoes the uneven rim of a thrown vessel. The packaging system uses kraft and ash paper stocks with blind-embossing, allowing the material to speak before ink does.",
+  "tags": ["Ceramics", "Packaging", "Artisan Brand", "Identity"],
+  "collageImages": [
+    {
+      "src": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&q=80&auto=format",
+      "alt": "Packaging design",
+      "position": "dominant",
+      "width": 360,
+      "height": 480
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=300&q=80&auto=format",
+      "alt": "Logo application",
+      "position": "secondary",
+      "width": 200,
+      "height": 260
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1502472592233-68f707831f24?w=500&q=80&auto=format",
+      "alt": "Brand mark detail",
+      "position": "secondary",
+      "width": 200,
+      "height": 200
+    }
+  ],
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=80&auto=format",
+      "alt": "Packaging system — kraft and blind emboss",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=800&q=80&auto=format",
+      "alt": "Logotype application on ceramic surface",
+      "aspect": "portrait"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1200&q=80&auto=format",
+      "alt": "Product and packaging composition",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1518173835740-f5d14111d76a?w=1000&q=80&auto=format",
+      "alt": "Brand mark — stamp and wax seal detail",
+      "aspect": "square"
+    }
+  ],
+  "credits": [
+    { "role": "Creative Direction", "name": "Studio Atelier" },
+    { "role": "Packaging Design", "name": "R. Oliveira" },
+    { "role": "Photography", "name": "J. Antunes" }
+  ]
+}

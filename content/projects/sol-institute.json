@@ -1,0 +1,62 @@
+{
+  "index": 5,
+  "title": "SOL Institute",
+  "year": "2022",
+  "client": "SOL Contemporary Art Institute",
+  "category": "Cultural Identity / Wayfinding",
+  "previewImage": "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80&auto=format",
+  "heroImage": "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1400&q=80&auto=format",
+  "challenge": "SOL Contemporary Art Institute, a newly established privately funded art space in Porto, required an institutional identity that could command the respect of a major cultural institution despite its emerging status. The identity needed to feel neither derivative of existing museum models nor so aggressively experimental as to alienate collectors and lenders.",
+  "solution": "We created an identity system built on spatial grammar — the same logic that governs the organisation of artworks within a white cube. The wordmark exists at the intersection of conceptual art practice and institutional rigour: set in a custom cut of a geometric sans-serif with deliberate optical corrections. The wayfinding system treats text as object, with large-format type used architecturally rather than informationally.",
+  "tags": ["Cultural Institution", "Museum", "Wayfinding", "Identity System"],
+  "collageImages": [
+    {
+      "src": "https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?w=500&q=80&auto=format",
+      "alt": "Institution entrance",
+      "position": "dominant",
+      "width": 360,
+      "height": 480
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300&q=80&auto=format",
+      "alt": "Interior wayfinding",
+      "position": "secondary",
+      "width": 200,
+      "height": 260
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1461344577544-4e5dc9487184?w=300&q=80&auto=format",
+      "alt": "Digital identity",
+      "position": "secondary",
+      "width": 200,
+      "height": 200
+    }
+  ],
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?w=1200&q=80&auto=format",
+      "alt": "Institution entrance — large-format signage",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80&auto=format",
+      "alt": "Wayfinding system — interior application",
+      "aspect": "portrait"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&q=80&auto=format",
+      "alt": "Exhibition catalogue and collateral",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1461344577544-4e5dc9487184?w=800&q=80&auto=format",
+      "alt": "Digital identity and screen applications",
+      "aspect": "square"
+    }
+  ],
+  "credits": [
+    { "role": "Creative Direction", "name": "Studio Atelier" },
+    { "role": "Wayfinding", "name": "L. Ferreira" },
+    { "role": "Brand Strategy", "name": "M. Carvalho" }
+  ]
+}

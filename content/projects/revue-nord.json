@@ -1,0 +1,62 @@
+{
+  "index": 3,
+  "title": "Revue Nord",
+  "year": "2023",
+  "client": "Revue Nord Publishing",
+  "category": "Editorial Design / Art Direction",
+  "previewImage": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&q=80&auto=format",
+  "heroImage": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1400&q=80&auto=format",
+  "challenge": "Revue Nord, a quarterly literary and cultural journal based in Copenhagen, required an editorial identity capable of communicating Nordic intellectual rigour while competing for shelf presence in an increasingly visual magazine market. The previous design had become indistinguishable from the ambient noise of Scandinavian lifestyle publishing.",
+  "solution": "We designed a system built on tension and negative space. The masthead operates at extremes — set in condensed grotesque at maximum weight, it commands the cover without decoration. Interior spreads use a strict six-column grid that is deliberately broken on feature openings, creating moments of visual rupture that mirror the journal's editorial ambition. The colour system is restricted to one accent per issue — a discipline that creates collectability.",
+  "tags": ["Editorial", "Print", "Publication Design", "Art Direction"],
+  "collageImages": [
+    {
+      "src": "https://images.unsplash.com/photo-1589998059171-988d887df646?w=500&q=80&auto=format",
+      "alt": "Cover design",
+      "position": "dominant",
+      "width": 360,
+      "height": 480
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=300&q=80&auto=format",
+      "alt": "Interior spread",
+      "position": "secondary",
+      "width": 200,
+      "height": 260
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=300&q=80&auto=format",
+      "alt": "Layout grid",
+      "position": "secondary",
+      "width": 200,
+      "height": 200
+    }
+  ],
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1589998059171-988d887df646?w=1200&q=80&auto=format",
+      "alt": "Cover design — Issue 12",
+      "aspect": "portrait"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=1200&q=80&auto=format",
+      "alt": "Interior spread typography system",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80&auto=format",
+      "alt": "Grid and layout architecture",
+      "aspect": "square"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&q=80&auto=format",
+      "alt": "Multi-issue cover system",
+      "aspect": "landscape"
+    }
+  ],
+  "credits": [
+    { "role": "Art Direction", "name": "E. Voss" },
+    { "role": "Typography", "name": "P. Lindberg" },
+    { "role": "Editorial Strategy", "name": "M. Carvalho" }
+  ]
+}

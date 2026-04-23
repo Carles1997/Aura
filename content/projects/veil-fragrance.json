@@ -1,0 +1,62 @@
+{
+  "index": 6,
+  "title": "Veil Fragrance",
+  "year": "2022",
+  "client": "Veil Perfumery",
+  "category": "Brand Identity / Luxury Packaging",
+  "previewImage": "https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80&auto=format",
+  "heroImage": "https://images.unsplash.com/photo-1541643600914-78b084683702?w=1400&q=80&auto=format",
+  "challenge": "Veil Perfumery, a niche fragrance house specialising in botanical extractions, needed to establish itself in the ultra-luxury sector of an increasingly crowded market. The founders brought extraordinary olfactory expertise but no visual language capable of communicating that expertise to a discerning audience.",
+  "solution": "The brand identity is built on the idea of the invisible made perceptible — the same transformation that occurs in fragrance. A logotype set in a high-contrast didone serif, intentionally light in weight, communicates delicacy and precision. The packaging system uses optically translucent papers and frosted glass to literalise the brand concept. Gold used as a functional — rather than decorative — material: stamped, not printed.",
+  "tags": ["Luxury", "Fragrance", "Packaging", "Retail Identity"],
+  "collageImages": [
+    {
+      "src": "https://images.unsplash.com/photo-1547887538-047f814d7f2f?w=500&q=80&auto=format",
+      "alt": "Packaging system",
+      "position": "dominant",
+      "width": 360,
+      "height": 480
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=300&q=80&auto=format",
+      "alt": "Bottle detail",
+      "position": "secondary",
+      "width": 200,
+      "height": 260
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&q=80&auto=format",
+      "alt": "Brand system",
+      "position": "secondary",
+      "width": 200,
+      "height": 200
+    }
+  ],
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1547887538-047f814d7f2f?w=1200&q=80&auto=format",
+      "alt": "Packaging system — primary and secondary",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=800&q=80&auto=format",
+      "alt": "Bottle and carton — detail photography",
+      "aspect": "portrait"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1200&q=80&auto=format",
+      "alt": "Retail environment and display system",
+      "aspect": "landscape"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80&auto=format",
+      "alt": "Brand typography and colour system",
+      "aspect": "square"
+    }
+  ],
+  "credits": [
+    { "role": "Creative Direction", "name": "E. Voss" },
+    { "role": "Packaging Engineering", "name": "R. Oliveira" },
+    { "role": "Retail Design", "name": "Studio Atelier" }
+  ]
+}

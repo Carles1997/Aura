@@ -1,0 +1,35 @@
+{
+  "studioName": "ATELIER",
+  "studioTagline": "Brand Strategy & Graphic Design",
+  "heroManifesto": {
+    "line1": "Design is the",
+    "line2": "silent argument",
+    "line3": "for everything",
+    "line4": "that matters."
+  },
+  "heroSubtext": "We build visual identities that endure. Strategic thinking, refined craft.",
+  "nav": {
+    "index": "INDEX",
+    "about": "ABOUT",
+    "contact": "CONTACT"
+  },
+  "about": {
+    "headline": "A studio built on rigor and restraint.",
+    "body": "We are a multidisciplinary design studio specialising in brand strategy, visual identity, and editorial design. Based between Lisbon and London, we work with clients who understand that design is not decoration — it is direction.",
+    "services": [
+      "Brand Strategy",
+      "Visual Identity",
+      "Graphic Design",
+      "Art Direction",
+      "Editorial Design",
+      "Environmental Graphics"
+    ],
+    "contact": {
+      "email": "studio@atelier.design",
+      "phone": "+351 912 345 678",
+      "location": "Lisbon, PT — London, UK"
+    },
+    "photographUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&q=80&auto=format",
+    "photographAlt": "Studio interior — abstract composition"
+  }
+}
