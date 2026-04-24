@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { motion, useInView, type Variants } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import EditorialSpread from "@/components/EditorialSpread"
@@ -25,7 +25,6 @@ const fadeUp: Variants = {
 
 export default function HomePage() {
   const indexRef = useRef(null)
-  const indexInView = useInView(indexRef, { once: true, margin: "-80px" })
 
   const { siteConfig, loading: loadingConfig } = useSiteConfig()
   const { projects, loading: loadingProjects } = useProjects()
