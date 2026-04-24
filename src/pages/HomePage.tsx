@@ -129,8 +129,8 @@ export default function HomePage() {
 
       <section ref={indexRef} className="bg-background">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={indexInView ? { opacity: 1 } : {}}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           className="px-6 md:px-10 py-10 md:py-12 flex items-center justify-between border-b border-border"
         >
