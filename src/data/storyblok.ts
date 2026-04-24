@@ -6,10 +6,6 @@ import { useState, useEffect } from "react"
 import { getStoryblokApi } from "@storyblok/react"
 import type { Project } from "./content"
 
-// =============================
-// Estructures intermèdies de Storyblok
-// =============================
-
 interface SbAsset {
   filename?: string
   alt?: string
@@ -23,6 +19,11 @@ interface SbHeroBlock {
   line_3?: string
   line_4?: string
   subtext?: string
+  scroll_indicator_text?: string
+  portfolio_label?: string
+  case_studies_label?: string
+  archives_label?: string
+  view_project_label?: string
 }
 
 interface SbAboutBlock {
@@ -35,6 +36,19 @@ interface SbAboutBlock {
   location?: string
   photograph?: SbAsset
   photograph_alt?: string
+  studio_label?: string
+  capabilities_title?: string
+  inquiries_title?: string
+  index_label?: string
+  footer_tagline?: string
+  back_to_index?: string
+  year_label?: string
+  client_label?: string
+  category_label?: string
+  role_label?: string
+  concept_label?: string
+  previous_label?: string
+  next_label?: string
 }
 
 type SbBodyBlock = SbHeroBlock | SbAboutBlock
@@ -64,6 +78,7 @@ interface SbProjectContent {
   year?: string
   client?: string
   category?: string
+  role?: string
   preview_image?: SbAsset
   hero_image?: SbAsset
   challenge?: string
@@ -80,10 +95,6 @@ interface SbStory<T> {
   content: T
 }
 
-// =============================
-// Tipus de sortida (site config)
-// =============================
-
 export interface SiteConfig {
   studioName: string
   studioTagline: string
@@ -94,6 +105,11 @@ export interface SiteConfig {
     line4: string
   }
   heroSubtext: string
+  scrollIndicatorText: string
+  portfolioLabel: string
+  caseStudiesLabel: string
+  archivesLabel: string
+  viewProjectLabel: string
   nav: {
     index: string
     about: string
@@ -110,6 +126,21 @@ export interface SiteConfig {
     }
     photographUrl: string
     photographAlt: string
+    studioLabel: string
+    capabilitiesTitle: string
+    inquiriesTitle: string
+    indexLabel: string
+    footerTagline: string
+  }
+  labels: {
+    backToIndex: string
+    yearLabel: string
+    clientLabel: string
+    categoryLabel: string
+    roleLabel: string
+    conceptLabel: string
+    previousLabel: string
+    nextLabel: string
   }
 }
 
@@ -118,6 +149,11 @@ const defaultSiteConfig: SiteConfig = {
   studioTagline: "",
   heroManifesto: { line1: "", line2: "", line3: "", line4: "" },
   heroSubtext: "",
+  scrollIndicatorText: "Selected Works",
+  portfolioLabel: "Portfolio",
+  caseStudiesLabel: "Case Studies",
+  archivesLabel: "Archives 2026",
+  viewProjectLabel: "View Project",
   nav: { index: "INDEX", about: "ABOUT", contact: "CONTACT" },
   about: {
     headline: "",
@@ -126,12 +162,23 @@ const defaultSiteConfig: SiteConfig = {
     contact: { email: "", phone: "", location: "" },
     photographUrl: "",
     photographAlt: "",
+    studioLabel: "The Studio",
+    capabilitiesTitle: "Capabilities",
+    inquiriesTitle: "Inquiries",
+    indexLabel: "Index",
+    footerTagline: "Rigor",
+  },
+  labels: {
+    backToIndex: "Back to index",
+    yearLabel: "Year",
+    clientLabel: "Client",
+    categoryLabel: "Category",
+    roleLabel: "Role",
+    conceptLabel: "Concept",
+    previousLabel: "Previous",
+    nextLabel: "Next",
   },
 }
-
-// =============================
-// Transformadors
-// =============================
 
 function assetToUrl(asset: SbAsset | undefined): string {
   return asset?.filename || ""
@@ -155,6 +202,11 @@ function transformHomeStory(
       line4: hero?.line_4 || "",
     },
     heroSubtext: hero?.subtext || "",
+    scrollIndicatorText: hero?.scroll_indicator_text || "Selected Works",
+    portfolioLabel: hero?.portfolio_label || "Portfolio",
+    caseStudiesLabel: hero?.case_studies_label || "Case Studies",
+    archivesLabel: hero?.archives_label || "Archives 2026",
+    viewProjectLabel: hero?.view_project_label || "View Project",
     nav: { index: "INDEX", about: "ABOUT", contact: "CONTACT" },
     about: {
       headline: about?.headline || "",
@@ -167,6 +219,21 @@ function transformHomeStory(
       },
       photographUrl: assetToUrl(about?.photograph),
       photographAlt: about?.photograph_alt || "",
+      studioLabel: about?.studio_label || "The Studio",
+      capabilitiesTitle: about?.capabilities_title || "Capabilities",
+      inquiriesTitle: about?.inquiries_title || "Inquiries",
+      indexLabel: about?.index_label || "Index",
+      footerTagline: about?.footer_tagline || "Rigor",
+    },
+    labels: {
+      backToIndex: about?.back_to_index || "Back to index",
+      yearLabel: about?.year_label || "Year",
+      clientLabel: about?.client_label || "Client",
+      categoryLabel: about?.category_label || "Category",
+      roleLabel: about?.role_label || "Role",
+      conceptLabel: about?.concept_label || "Concept",
+      previousLabel: about?.previous_label || "Previous",
+      nextLabel: about?.next_label || "Next",
     },
   }
 }
@@ -180,6 +247,7 @@ function transformProjectStory(story: SbStory<SbProjectContent>): Project {
     year: c.year || "",
     client: c.client || "",
     category: c.category || "",
+    role: c.role || "",
     previewImage: assetToUrl(c.preview_image),
     heroImage: assetToUrl(c.hero_image),
     challenge: c.challenge || "",
@@ -204,10 +272,6 @@ function transformProjectStory(story: SbStory<SbProjectContent>): Project {
   }
 }
 
-// =============================
-// Bridge helper
-// =============================
-
 type StoryblokBridgeInstance = {
   on: (events: string[], cb: () => void) => void
 }
@@ -220,10 +284,6 @@ function getBridge(): StoryblokBridgeInstance | null {
   if (!win.StoryblokBridge) return null
   return new win.StoryblokBridge({ resolveRelations: [] })
 }
-
-// =============================
-// Hooks
-// =============================
 
 export function useSiteConfig(): { siteConfig: SiteConfig; loading: boolean } {
   const [siteConfig, setSiteConfig] = useState<SiteConfig>(defaultSiteConfig)
