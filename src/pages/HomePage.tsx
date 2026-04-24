@@ -117,7 +117,7 @@ export default function HomePage() {
             className="text-[8px] tracking-[0.35em] uppercase text-muted-foreground opacity-40"
             style={{ fontFamily: "var(--font-space-mono)" }}
           >
-            Selected Works
+            {siteConfig.scrollIndicatorText}
           </span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
@@ -138,13 +138,13 @@ export default function HomePage() {
             className="text-[9px] tracking-[0.3em] uppercase text-muted-foreground"
             style={{ fontFamily: "var(--font-space-mono)" }}
           >
-            Portfolio — {projects.length} Case Studies
+            {siteConfig.portfolioLabel} — {projects.length} {siteConfig.caseStudiesLabel}
           </span>
           <span
             className="hidden md:block text-[9px] tracking-[0.2em] uppercase text-muted-foreground opacity-30"
             style={{ fontFamily: "var(--font-space-mono)" }}
           >
-            Archives 2026
+            {siteConfig.archivesLabel}
           </span>
         </motion.div>
 

@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 import type { Project } from "@/data/content"
+import { useSiteConfig } from "@/data/storyblok"
 import ImageCollage from "./ImageCollage"
 
 interface EditorialSpreadProps {
@@ -19,17 +20,17 @@ export default function EditorialSpread({
   const containerRef = useRef(null)
   const inView = useInView(containerRef, { once: true, margin: "-50px" })
   const navigate = useNavigate()
+  const { siteConfig } = useSiteConfig()
 
   return (
     <motion.section
       ref={containerRef}
-      /* ESPAIAT MÍNIM: py-4 a py-10 per a un look súper compacte */
       className="relative py-4 md:py-8 lg:py-10 px-6 md:px-10 border-b border-border group cursor-pointer overflow-hidden"
       onClick={() => navigate(`/project/${project.id}`)}
     >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center">
-          
+
           {/* Bloc de Text */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -49,17 +50,17 @@ export default function EditorialSpread({
 
               <div className="flex gap-8 text-[9px] uppercase tracking-widest font-mono">
                 <div>
-                  <p className="text-muted-foreground mb-0.5 text-[7px]">Year</p>
+                  <p className="text-muted-foreground mb-0.5 text-[7px]">{siteConfig.labels.yearLabel}</p>
                   <p className="text-foreground">{project.year}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground mb-0.5 text-[7px]">Client</p>
+                  <p className="text-muted-foreground mb-0.5 text-[7px]">{siteConfig.labels.clientLabel}</p>
                   <p className="text-foreground">{project.client}</p>
                 </div>
               </div>
 
               <div className="pt-1 flex items-center gap-2 text-[8px] uppercase tracking-[0.2em] font-mono opacity-0 group-hover:opacity-100 group-hover:gap-4 transition-all duration-500">
-                View Project <ArrowRight size={10} />
+                {siteConfig.viewProjectLabel} <ArrowRight size={10} />
               </div>
             </div>
           </motion.div>

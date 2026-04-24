@@ -73,7 +73,7 @@ export default function Footer() {
                 className="text-[8px] tracking-[0.3em] uppercase text-foreground/40 mb-3 italic"
                 style={{ fontFamily: "var(--font-space-mono)" }}
               >
-                The Studio
+                {siteConfig.about.studioLabel}
               </p>
             </FadeItem>
 
@@ -98,7 +98,7 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-8 border-t border-black/10 pt-6">
               <FadeItem delay={0.2}>
                 <p className="text-[8px] tracking-[0.4em] uppercase text-foreground/30 mb-4 italic" style={{ fontFamily: "var(--font-space-mono)" }}>
-                  Capabilities
+                  {siteConfig.about.capabilitiesTitle}
                 </p>
                 <ul className="space-y-1.5">
                   {about.services.map((service, i) => (
@@ -115,7 +115,7 @@ export default function Footer() {
 
               <FadeItem delay={0.25}>
                 <p className="text-[8px] tracking-[0.4em] uppercase text-foreground/30 mb-4 italic" style={{ fontFamily: "var(--font-space-mono)" }}>
-                  Inquiries
+                  {siteConfig.about.inquiriesTitle}
                 </p>
                 <div className="space-y-4">
                   <a
@@ -144,7 +144,7 @@ export default function Footer() {
                 style={{ fontFamily: "var(--font-space-mono)" }}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               >
-                Index
+                {siteConfig.about.indexLabel}
                 <ArrowRight
                   size={10}
                   className="transition-transform duration-300 group-hover:translate-x-1"
@@ -156,7 +156,7 @@ export default function Footer() {
                   © {new Date().getFullYear()}
                 </span>
                 <span className="text-[8px] tracking-[0.4em] uppercase text-foreground/20" style={{ fontFamily: "var(--font-space-mono)" }}>
-                  Rigor
+                  {siteConfig.about.footerTagline}
                 </span>
               </div>
             </div>

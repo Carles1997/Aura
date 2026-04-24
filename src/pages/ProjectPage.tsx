@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { motion, useInView } from "framer-motion"
 import { ArrowLeft } from "lucide-react"
-import { useProjects } from "@/data/storyblok"
+import { useProjects, useSiteConfig } from "@/data/storyblok"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
@@ -28,11 +28,10 @@ export default function ProjectPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
 
-  // Carreguem tots els projectes de Storyblok
-  const { projects, loading } = useProjects()
+  const { projects, loading: loadingProjects } = useProjects()
+  const { siteConfig, loading: loadingConfig } = useSiteConfig()
 
-  // Mostrem pantalla de càrrega
-  if (loading) {
+  if (loadingProjects || loadingConfig) {
     return (
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <p
@@ -64,7 +63,7 @@ export default function ProjectPage() {
             onClick={() => navigate("/")}
             className="text-[10px] tracking-[0.3em] uppercase underline"
           >
-            Back to index
+            {siteConfig.labels.backToIndex}
           </button>
         </div>
       </div>
@@ -87,7 +86,7 @@ export default function ProjectPage() {
             onClick={() => navigate("/")}
             className={`${metaStyle} flex items-center gap-2 hover:opacity-100 transition-opacity mb-8`}
           >
-            <ArrowLeft size={10} /> Back to index
+            <ArrowLeft size={10} /> {siteConfig.labels.backToIndex}
           </motion.button>
 
           <motion.h1
@@ -103,10 +102,10 @@ export default function ProjectPage() {
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8 py-6 border-y border-border font-mono text-[9px] uppercase tracking-[0.2em]"
           >
-            <div><p className="opacity-50 mb-1 italic">Year</p><p>{project.year}</p></div>
-            <div><p className="opacity-50 mb-1 italic">Client</p><p>{project.client}</p></div>
-            <div><p className="opacity-50 mb-1 italic">Category</p><p>{project.category}</p></div>
-            <div><p className="opacity-50 mb-1 italic">Role</p><p>Art Direction</p></div>
+            <div><p className="opacity-50 mb-1 italic">{siteConfig.labels.yearLabel}</p><p>{project.year}</p></div>
+            <div><p className="opacity-50 mb-1 italic">{siteConfig.labels.clientLabel}</p><p>{project.client}</p></div>
+            <div><p className="opacity-50 mb-1 italic">{siteConfig.labels.categoryLabel}</p><p>{project.category}</p></div>
+            <div><p className="opacity-50 mb-1 italic">{siteConfig.labels.roleLabel}</p><p>{project.role || "Art Direction"}</p></div>
           </motion.div>
         </header>
 
@@ -123,7 +122,7 @@ export default function ProjectPage() {
           <div className="py-12 md:py-16 md:pl-10 md:border-l border-border flex flex-col justify-center">
             <AnimatedSection delay={0.2} className="w-full max-w-sm">
               <div className="space-y-6">
-                <p className={metaStyle}>Concept</p>
+                <p className={metaStyle}>{siteConfig.labels.conceptLabel}</p>
                 <p className="text-base md:text-lg leading-relaxed font-light text-foreground/80 italic">
                   {project.challenge}
                 </p>
@@ -153,12 +152,12 @@ export default function ProjectPage() {
         <nav className="border-t border-border">
           <div className="grid grid-cols-2 divide-x divide-border font-mono text-[9px] uppercase tracking-[0.3em]">
             <Link to={prevProject ? `/project/${prevProject.id}` : "/"} className="py-8 hover:bg-black/[0.02] transition-colors group px-4">
-              <span className="opacity-40 italic block mb-2">Previous</span>
-              <span className="font-normal">{prevProject?.title || "Index"}</span>
+              <span className="opacity-40 italic block mb-2">{siteConfig.labels.previousLabel}</span>
+              <span className="font-normal">{prevProject?.title || siteConfig.about.indexLabel}</span>
             </Link>
             <Link to={nextProject ? `/project/${nextProject.id}` : "/"} className="py-8 hover:bg-black/[0.02] transition-colors group text-right px-4">
-              <span className="opacity-40 italic block mb-2">Next</span>
-              <span className="font-normal">{nextProject?.title || "Index"}</span>
+              <span className="opacity-40 italic block mb-2">{siteConfig.labels.nextLabel}</span>
+              <span className="font-normal">{nextProject?.title || siteConfig.about.indexLabel}</span>
             </Link>
           </div>
         </nav>

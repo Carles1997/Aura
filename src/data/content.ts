@@ -1,12 +1,9 @@
 // ============================================================
-// CONTENT CONFIGURATION
+// CONTENT TYPES
 // ============================================================
-// Aquest fitxer carrega el contingut dels JSON a /content/.
-// NO editis aquest fitxer directament — edita els JSON o fes
-// servir el panell de TinaCMS a /admin/index.html
+// Aquest fitxer defineix els tipus que els components React fan 
+// servir. Les dades reals venen de Storyblok (veure storyblok.ts).
 // ============================================================
-
-import siteConfigJson from "../../content/site/config.json";
 
 export interface Project {
   id: string;
@@ -15,6 +12,7 @@ export interface Project {
   year: string;
   client: string;
   category: string;
+  role: string;
   previewImage: string;
   heroImage: string;
   challenge: string;
@@ -37,21 +35,3 @@ export interface Project {
     name: string;
   }[];
 }
-
-// Importació dinàmica de tots els projectes (Vite)
-const projectModules = import.meta.glob<{ default: Omit<Project, "id"> }>(
-  "../../content/projects/*.json",
-  { eager: true }
-);
-
-export const siteConfig = siteConfigJson;
-
-// Ordenem els projectes pel camp "index"
-// L'id es genera a partir del nom del fitxer (ex: meridian-capital.json → "meridian-capital")
-export const projects: Project[] = Object.entries(projectModules)
-  .map(([path, mod]) => {
-    const filename = path.split("/").pop() || "";
-    const id = filename.replace(".json", "");
-    return { ...mod.default, id };
-  })
-  .sort((a, b) => a.index - b.index);
